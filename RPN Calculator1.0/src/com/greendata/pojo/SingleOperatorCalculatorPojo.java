@@ -1,18 +1,32 @@
 package com.greendata.pojo;
 
-import java.util.Arrays;
-import java.util.ListIterator;
+
 import java.util.Stack;
 
 import com.greendata.operator.OperatorImpl;
 import com.greendata.util.Util;
 
-public class InpultCalculator {
+/**
+* This class will push the input to the Stack and calculate according to operator present in input
+* *
+* @author  Tanmaya Dey
+* @version 1.0
+* @since   2018-11-07 
+*/
+
+public class SingleOperatorCalculatorPojo {
 
 	static OperatorImpl operatorImpl = new OperatorImpl();
 	private static Stack<String> resultStack = new Stack<String>();
 	
-	public static Stack<String> pushToStack(String inputLine) {		
+	
+	 /**
+	   * This method is used to push the input into Stack
+	   * @param inputLine This is command line input
+	   * @return stack This returns new stack with calculated value
+	   */
+	
+	public static Stack<String> pushToStackToGetResult(String inputLine) {		
 		
 		resultStack = Util.checkFirstCharOtherThanNumber(inputLine, resultStack);
 		if(Util.firstCharValCheck) {
@@ -20,7 +34,11 @@ public class InpultCalculator {
 			return resultStack;
 		}
 		resultStack = Util.addToStackFunctio(inputLine, resultStack);
-		calculate(resultStack);
+		if(Util.checkMulipleOperator(resultStack)) {
+			MultipleOperatorCalculatorPojo.multiOperatorCalculation(resultStack);
+		}else {
+			calculate(resultStack);
+		}
 		System.out.println("stack :  "+resultStack);
 		return resultStack;
 	}
@@ -33,6 +51,10 @@ public class InpultCalculator {
 		return resultStack;
 	}
 	
+	 /**
+	   * This method is a decision checker on basis of operator
+	   * @param peekVal This is input operator 
+	   */
 	private static void getOpearator(String peekVal) {
 		
 		switch (peekVal) {
@@ -67,7 +89,7 @@ public class InpultCalculator {
 
 		default:
 			//end is not an operator 
-			resultStack = InlineCalculator.searchOperator(resultStack);
+			resultStack = MultipleOperatorCalculatorPojo.multiOperatorCalculation(resultStack);
 			break;
 		}
 	}
@@ -79,7 +101,11 @@ public class InpultCalculator {
 	}
 	
 	
-	
+	/**
+	   * This method will find the right and left side value of a operator which named as firstVal and secVal
+	   * then call the addition method
+	   * @param resultStack This is command line input 
+	   */
 	
 	private static Stack<String>  callAddition(Stack<String>  resultStack) {
 		int firstVal = 0 ;
@@ -94,6 +120,11 @@ public class InpultCalculator {
 		}
 		return resultStack;
 	}
+	/**
+	   * This method will find the right and left side value of a operator which named as firstVal and secVal
+	   * then call the subtraction method
+	   * @param resultStack This is command line input 
+	   */
 	
 	private static Stack<String> callSub(Stack<String>  resultStack) {
 		int firstVal = 0 ;
@@ -108,7 +139,11 @@ public class InpultCalculator {
 		}
 		return resultStack;
 	}
-	
+	/**
+	   * This method will find the right and left side value of a operator which named as firstVal and secVal
+	   * then call the multiplication method
+	   * @param resultStack This is command line input 
+	   */
 	private static Stack<String> callMulti(Stack<String>  resultStack) {
 		int firstVal = 0 ;
 		int secVal = 0 ;
@@ -122,6 +157,11 @@ public class InpultCalculator {
 		}
 		return resultStack;
 	}
+	/**
+	   * This method will find the right and left side value of a operator which named as firstVal and secVal
+	   * then call the division method
+	   * @param resultStack This is command line input 
+	   */
 	private static Stack<String> callDiv(Stack <String>  resultStack) {
 		int firstVal = 0 ;
 		int secVal = 0 ;

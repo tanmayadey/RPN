@@ -1,5 +1,13 @@
 package com.greendata.operator;
 
+
+/**
+* This class is a implementation class of Operator interface to calculate value 
+* *
+* @author  Tanmaya Dey
+* @version 1.0
+* @since   2018-11-07 
+*/
 public class OperatorImpl implements Operator {
 
 	@Override

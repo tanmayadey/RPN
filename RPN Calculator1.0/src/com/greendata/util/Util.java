@@ -3,7 +3,14 @@ package com.greendata.util;
 import java.util.Arrays;
 import java.util.Stack;
 
-import com.greendata.pojo.InpultCalculator;
+
+/**
+* This class contains all utility methods
+* *
+* @author  Tanmaya Dey
+* @version 1.0
+* @since   2018-11-07 
+*/
 
 public class Util {
 	
@@ -62,6 +69,31 @@ public class Util {
 			
 		}
 		return resultStack;
+	}
+	
+	public static boolean checkMulipleOperator(Stack<String> resultStack) {
+		//AtomicInteger  count = new AtomicInteger(0);
+		Integer count = new Integer(0);
+		//resultStack.stream().
+		/*resultStack.forEach(item ->{
+			if(item.equals("*")) {
+				//count.set(count.incrementAndGet());
+				count. count.intValue()+1;
+			}
+				
+		});*/
+		
+		for (String string : resultStack) {
+				if(string.equals("*")) {
+					count++;
+				}			
+		}
+		
+		if(count >1)
+			return true;
+		else
+			return false;
+		
 	}
 
 }

@@ -11,7 +11,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.greendata.pojo.InpultCalculator;
+import com.greendata.pojo.SingleOperatorCalculatorPojo;
 
 class InpultCalculatorTest {
 
@@ -33,28 +33,28 @@ class InpultCalculatorTest {
 
 	@Test
 	void testPushToStack() {
-		Stack<String> result = InpultCalculator.pushToStack("6 7 +");
+		Stack<String> result = SingleOperatorCalculatorPojo.pushToStackToGetResult("6 7 +");
 		assertEquals("13", result.peek().toString());
 		
 	}
 	@Test
 	void testPushToStackClear() {
-		Stack<String> result = InpultCalculator.pushToStack("clear");
+		Stack<String> result = SingleOperatorCalculatorPojo.pushToStackToGetResult("clear");
 		assertEquals(true, result.isEmpty());
 		
 	}
 	
 	@Test
 	void testPushToStackUndo() {
-		Stack<String> result = InpultCalculator.pushToStack("7 8 9 +");
-		result = InpultCalculator.pushToStack("undo");
+		Stack<String> result = SingleOperatorCalculatorPojo.pushToStackToGetResult("7 8 9 +");
+		result = SingleOperatorCalculatorPojo.pushToStackToGetResult("undo");
 		assertEquals(false, result.contains("+"));
 		
 	}
 	
 	@Test
 	void testPushToStackMinus() {
-		Stack<String> result = InpultCalculator.pushToStack("7 8 9 -");
+		Stack<String> result = SingleOperatorCalculatorPojo.pushToStackToGetResult("7 8 9 -");
 		//result = InpultCalculator.pushToStack("undo");
 		//assertEquals(false, result.contains("+"));
 		

@@ -3,10 +3,16 @@ package com.greendata.pojo;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Stack;
 
-public class InputCalector {
+/**
+* This class will collect the input from command line
+* *
+* @author  Tanmaya Dey
+* @version 1.0
+* @since   2018-11-07 
+*/
+
+public class CommandLineCollectorPojo {
 	
 	public static String getInput() throws IOException {
 		System.out.println("Enter your input !! ");
